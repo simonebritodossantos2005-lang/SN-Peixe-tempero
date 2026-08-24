@@ -462,6 +462,13 @@ async function sendWhatsApp(){
  location.href="https://wa.me/"+number+"?text="+encodeURIComponent(t);
 }
 init();
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("Service Worker registrado!"))
+      .catch((erro) => console.error("Erro no Service Worker:", erro));
+  });
+  }
 </script>
 </body>
 </html>
