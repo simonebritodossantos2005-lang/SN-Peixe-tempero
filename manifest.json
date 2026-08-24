@@ -2,11 +2,23 @@
   "background_color": "#ffffff",
   "dir": "ltr",
   "display": "standalone",
-  "name": "SN Peixe &amp;amp; Temperos",
+  "name": "SN Peixe Sampa & Temperos",
   "orientation": "any",
   "scope": "/",
   "short_name": "SN Peixe",
   "start_url": "/",
   "theme_color": "#f7b900",
-  "lang": "pt"
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "launchericon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "launchericon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
