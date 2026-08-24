@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7b900">
+<title>SN Peixe & Temperos</title>
+<style>
+:root{
+  --gold:#f7b900;--gold2:#ffd83d;--cream:#fff8d7;--ink:#16233a;
+  --pink:#f34f83;--green:#2cab59;--blue:#2196d3;--purple:#8b5bd6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;font-family:Arial,sans-serif;color:var(--ink);
+ background:
+ radial-gradient(circle at 15% 10%,#fff 0 1px,transparent 2px),
+ radial-gradient(circle at 80% 25%,#fff 0 1px,transparent 2px),
+ radial-gradient(circle at 45% 70%,#fff 0 1px,transparent 2px),
+ linear-gradient(135deg,#ffd83d,#fff0a0 48%,#f8c516);
+ background-size:90px 90px,130px 130px,110px 110px,100% 100%;
+ min-height:100vh;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.app{max-width:760px;margin:auto;min-height:100vh;background:rgba(255,248,215,.35)}
+.hero{
+ padding:26px 20px 22px;position:relative;overflow:hidden;
+ background:linear-gradient(145deg,#ffd20b,#fff09a 55%,#f5c000);
+ border-radius:0 0 34px 34px;box-shadow:0 8px 25px #8b640040;
+}
+.hero:before,.hero:after{content:"✦";position:absolute;color:#fff;font-size:30px;animation:twinkle 2.5s infinite}
+.hero:before{left:8%;top:18%}.hero:after{right:8%;top:35%;animation-delay:1s}
+@keyframes twinkle{50%{transform:scale(.55) rotate(20deg);opacity:.35}}
+.brand{display:flex;align-items:center;gap:10px}
+.fishlogo{font-size:54px;filter:drop-shadow(0 4px 2px #6c4b0055);animation:swim 5s ease-in-out infinite}
+@keyframes swim{50%{transform:translateX(7px)}}
+h1{font-family:Georgia,serif;font-size:44px;line-height:.98;margin:0;font-weight:900;letter-spacing:-1px}
+.tag{font-family:Georgia,serif;font-size:18px;margin:12px 0 0}
+.cart-top{
+ position:absolute;right:16px;top:20px;width:58px;height:58px;border-radius:50%;
+ border:4px solid #fff;background:#182b42;color:#fff;font-size:27px;
+ box-shadow:0 7px 15px #0004;z-index:2
+}
+.badge{position:absolute;right:-2px;top:-5px;background:var(--pink);border:3px solid #fff;border-radius:20px;padding:2px 7px;font-size:13px}
+.hand{position:absolute;right:12px;top:75px;font-size:54px;transform:rotate(-8deg);animation:point 1.5s infinite}
+@keyframes point{50%{transform:rotate(-8deg) translateY(7px)}}
+.click{position:absolute;right:12px;top:130px;background:#fff;border-radius:17px;padding:8px 12px;color:var(--pink);font-weight:900;font-size:16px;box-shadow:0 4px 12px #0002}
+.welcome{text-align:center;margin:28px 45px 12px;font-family:Georgia,serif;font-size:32px;font-weight:900}
+.welcome span{color:var(--pink)}
+.lead{text-align:center;font-size:17px;margin:0 auto;max-width:540px;line-height:1.4}
+.section{padding:20px 16px}
+.section-title{font-family:Georgia,serif;font-size:28px;margin:5px 0 12px}
+.feed{display:flex;flex-direction:column;gap:20px}
+.post{
+ background:#17120c;border:3px solid #fff;border-radius:25px;overflow:hidden;
+ box-shadow:0 10px 25px #0004;position:relative;color:#fff
+}
+.media{width:100%;display:block;max-height:640px;object-fit:cover;background:#000}
+.post-info{padding:14px 15px 16px;background:linear-gradient(transparent,#100d09 15%)}
+.post-title{font-size:23px;font-weight:900;margin:0 0 5px}
+.caption{font-size:16px;line-height:1.35;margin:0}
+.post-actions{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.action{background:#fff;color:#222;border:0;border-radius:20px;padding:8px 12px;font-weight:800}
+.action.liked{color:var(--pink)}
+.comment-box{display:flex;gap:7px;margin-top:9px}
+.comment-box input{flex:1;border:0;border-radius:18px;padding:10px 13px}
+.comment-box button{border:0;border-radius:18px;background:var(--pink);color:#fff;padding:10px 14px;font-weight:800}
+.video-tools{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:#090705}
+.video-tools button{border:0;background:#fff;color:#222;border-radius:15px;padding:6px 10px;font-weight:800}
+.product-entry{
+ margin:8px 16px 0;border-radius:24px;padding:16px;background:linear-gradient(135deg,#fff,#fff7c9);
+ border:3px solid #fff;box-shadow:0 8px 22px #6b4d0030;text-align:center
+}
+.product-entry button{width:100%;border:0;border-radius:18px;padding:15px;background:#172a42;color:#fff;font-weight:900;font-size:18px}
+.categories{display:flex;flex-direction:column;gap:12px}
+.cat{
+ display:flex;align-items:center;gap:13px;padding:11px;border-radius:22px;border:3px solid #fff;
+ box-shadow:0 7px 18px #0002;text-align:left;color:#14253b
+}
+.cat img{width:74px;height:62px;object-fit:cover;border-radius:15px;background:#fff}
+.cat .ct{flex:1}.ct b{font-size:20px}.ct span{display:block;margin-top:3px;font-size:13px}
+.cat .go{width:38px;height:38px;border:0;border-radius:50%;background:#198dca;color:#fff;font-size:20px;font-weight:900}
+.blue{background:linear-gradient(90deg,#c7f0ff,#8fdcff)}
+.pink{background:linear-gradient(90deg,#ffd0df,#f4a1c0)}
+.green{background:linear-gradient(90deg,#d9f6b6,#b6df88)}
+.purple{background:linear-gradient(90deg,#e5d4ff,#c8b1f0)}
+.cat-add{background:#fff0a2;border:2px dashed #d39d00}
+.products{display:none}
+.products.active{display:block}
+.prodgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.prod{
+ background:#fffdf0;border:2px solid #fff;border-radius:20px;padding:10px;box-shadow:0 6px 16px #0002
+}
+.prod img{width:100%;height:145px;object-fit:cover;border-radius:15px}
+.prod h3{font-size:17px;margin:9px 0 4px}.price{font-weight:900;font-size:20px}
+.desc{font-size:12px;min-height:32px;color:#5a5a5a}
+.add{width:100%;border:0;border-radius:14px;background:var(--green);color:#fff;padding:10px;font-weight:900}
+.back{border:0;background:#172a42;color:#fff;border-radius:18px;padding:10px 14px;font-weight:900;margin-bottom:10px}
+.cart-panel{
+ position:fixed;left:50%;bottom:0;transform:translate(-50%,110%);transition:.3s;
+ width:min(760px,100%);max-height:88vh;overflow:auto;background:#fff8d7;
+ border:4px solid #fff;box-shadow:0 -12px 35px #0004;border-radius:30px 30px 0 0;
+ z-index:20;padding:18px
+}
+.cart-panel.open{transform:translate(-50%,0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center}
+.close{border:0;background:#222;color:#fff;border-radius:50%;width:38px;height:38px}
+.cart-row{display:grid;grid-template-columns:60px 1fr auto;gap:10px;align-items:center;background:#fff;border-radius:18px;padding:8px;margin:8px 0}
+.cart-row img{width:60px;height:55px;object-fit:cover;border-radius:12px}
+.qty{display:flex;align-items:center;gap:7px}.qty button{border:0;border-radius:50%;width:28px;height:28px;background:#ffe4ef}
+.delivery{background:#fff;border-radius:18px;padding:13px;margin-top:10px}
+.delivery label{display:flex;justify-content:space-between;padding:8px 0}
+.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;padding:12px 0}
+.wa{width:100%;border:0;background:#22b85a;color:#fff;border-radius:20px;padding:15px;font-weight:900;font-size:18px}
+.info{padding:20px 16px 100px}
+.info-card{background:#fffdf0;border:2px solid #fff;border-radius:20px;padding:16px;box-shadow:0 7px 18px #0002}
+.bottom{
+ position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(760px,100%);
+ display:flex;justify-content:space-around;z-index:15;background:#f9bd00dd;
+ backdrop-filter:blur(8px);border-top:2px solid #fff;padding:7px 5px calc(7px + env(safe-area-inset-bottom))
+}
+.bottom button{background:none;border:0;color:#17233a;font-size:12px;font-weight:900;display:flex;flex-direction:column;align-items:center;gap:2px}
+.bottom .ico{font-size:23px}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%) translateY(-120px);transition:.3s;background:#172a42;color:#fff;padding:12px 17px;border-radius:20px;z-index:30;font-weight:900;box-shadow:0 6px 20px #0004}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.empty{background:#fff;border-radius:18px;padding:20px;text-align:center}
+.order-section{display:none;padding:20px 16px 100px}
+.order-section.active{display:block}
+.order-card{background:#fffdf0;border:2px solid #fff;border-radius:20px;padding:15px;margin:12px 0;box-shadow:0 7px 18px #0002}
+.order-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.order-id{font-size:20px;font-weight:900}
+.order-status{padding:7px 10px;border-radius:18px;background:#ffd83d;font-weight:900;font-size:13px}
+.order-item{margin-top:10px;padding:10px;border-radius:14px;background:#fff}
+.order-total{font-size:18px;font-weight:900;margin-top:10px}
+.order-progress{display:flex;justify-content:space-between;gap:4px;margin-top:14px}
+.order-step{flex:1;text-align:center;font-size:10px;color:#777}
+.order-step .dot{width:27px;height:27px;margin:0 auto 4px;border-radius:50%;display:grid;place-items:center;background:#ddd;font-size:13px}
+.order-step.done{color:#168a47;font-weight:900}
+.order-step.done .dot{background:#2cab59;color:#fff}
+.order-step.current{color:#16233a;font-weight:900}
+.order-step.current .dot{background:#f7b900;color:#16233a}
+.orders-tools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.orders-tools button{border:0;border-radius:16px;padding:10px 14px;font-weight:900;background:#172a42;color:#fff}
+.orders-tools button.secondary{background:#2cab59}
+.order-phone-box{background:#fff;border-radius:18px;padding:14px;margin:12px 0}
+.order-phone-box input{width:100%;padding:12px;border:2px solid #e2d58b;border-radius:12px;box-sizing:border-box}
+
+@media(max-width:520px){
+ h1{font-size:38px}.welcome{font-size:28px}.prodgrid{grid-template-columns:1fr 1fr}.prod img{height:120px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero" id="home">
+  <button class="cart-top" onclick="openCart()" aria-label="Carrinho">🛒<span class="badge" id="badge">0</span></button>
+  <div class="brand"><div class="fishlogo">🐟</div><div><h1 id="title">SN Peixe & Temperos</h1><div class="tag">Qualidade que você sente! ❤️</div></div></div>
+  <div class="hand">🫵🏻</div><div class="click">Clica aqui!</div>
+  <div class="welcome">Bem vindo(a) <span>💗</span></div>
+  <p class="lead">Acompanhe nossas novidades, promoções e momentos especiais! ✨</p>
+</header>
+
+<section class="section" id="social">
+  <h2 class="section-title">⭐ Destaques da semana</h2>
+  <div id="feed" class="feed"><div class="empty">Carregando novidades...</div></div>
+</section>
+
+<section class="product-entry" id="productEntry">
+  <button onclick="showProducts()">🛍️ Produtos</button>
+</section>
+
+<section class="section products" id="productArea">
+  <button class="back" onclick="showHome()">← Voltar para novidades</button>
+  <h2 class="section-title">Produtos 💕</h2>
+  <div id="categories" class="categories"></div>
+  <div id="productList"></div>
+</section>
+
+
+<section class="order-section" id="ordersArea">
+  <button class="back" onclick="showHome()">← Voltar para a loja</button>
+  <h2 class="section-title">📦 Meus pedidos</h2>
+  <p class="lead" style="margin-bottom:12px">Acompanhe o andamento do seu pedido em tempo real.</p>
+  <div class="order-phone-box">
+    <b>📱 Seu WhatsApp</b>
+    <input id="ordersPhone" inputmode="tel" placeholder="Digite o WhatsApp usado no pedido">
+  </div>
+  <div class="orders-tools">
+    <button class="secondary" onclick="loadMyOrders()">🔄 Atualizar pedidos</button>
+  </div>
+  <div id="ordersList"><div class="empty">Digite seu WhatsApp para consultar seus pedidos. 💗</div></div>
+</section>
+
+<section class="info">
+ <div class="info-card">
+  <h2 class="section-title">📍 Informações</h2>
+  <div id="info">Carregando...</div>
+ </div>
+</section>
+</div>
+
+<div id="cartPanel" class="cart-panel">
+ <div class="cart-head"><h2>🛒 Carrinho 💕</h2><button class="close" onclick="closeCart()">✕</button></div>
+ <p>Confira seus produtos</p>
+ <div id="cartItems"></div>
+ <div class="customer-fields" style="margin:14px 0;padding:12px;border-radius:16px;background:#fff8d8">
+  <b>👤 Seus dados</b>
+  <input id="customerName" placeholder="Seu nome" style="display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:10px;border:1px solid #e2d58b;border-radius:10px">
+  <input id="customerPhone" placeholder="Seu WhatsApp" inputmode="tel" style="display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:10px;border:1px solid #e2d58b;border-radius:10px">
+  <input id="customerAddress" placeholder="Endereço para entrega (se escolher entrega)" style="display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:10px;border:1px solid #e2d58b;border-radius:10px">
+</div>
+<div class="delivery">
+  <b>Entrega</b><br><small>Escolha a opção de recebimento</small>
+  <label><span>🔘 Entregar em casa</span><span id="deliveryPrice">Taxa: R$ 0,00</span></label>
+  <label><span>⚪ Retirar na feira</span><span>Sem taxa</span></label>
+  <div id="deliveryRadios">
+   <label><input type="radio" name="delivery" value="entrega" checked onchange="renderCart()"> Entregar em casa</label>
+   <label><input type="radio" name="delivery" value="feira" onchange="renderCart()"> Retirar na feira</label>
+  </div>
+ </div>
+ <div class="total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+ <button class="wa" onclick="sendWhatsApp()">🟢 Finalizar pedido via WhatsApp</button>
+</div>
+
+<nav class="bottom">
+ <button onclick="showHome()"><span class="ico">🏠</span>Início</button>
+ <button onclick="openCategory('peixe')"><span class="ico">🐟</span>Peixes</button>
+ <button onclick="openCategory('torta')"><span class="ico">🥧</span>Tortas</button>
+ <button onclick="openCategory('tempero')"><span class="ico">🧂</span>Temperos</button>
+ <button onclick="showMyOrders()"><span class="ico">📦</span>Meus pedidos</button>
+</nav>
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SB_URL="https://axymhlvjjnxtwbbytcqz.supabase.co";
+const SB_KEY="sb_publishable_-sCv8TRqFN1nCyzgK0yzOw_K4AB8Rpa";
+const sb=supabase.createClient(SB_URL,SB_KEY);
+
+let products=[],cfg={},posts=[],cart=[],currentCat=null;
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function money(n){return "R$ "+Number(n||0).toFixed(2).replace(".",",")}
+function toast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1800)}
+
+async function init(){
+ const [pr,cr,po]=await Promise.all([
+  sb.from("produtos").select("*").eq("disponivel",true).order("id"),
+  sb.from("configuracoes").select("*").eq("id",1).maybeSingle(),
+  sb.from("postagens").select("*").eq("publicado",true).order("criado_em",{ascending:false})
+ ]);
+ products=pr.data||[];cfg=cr.data||{};posts=po.data||[];
+ renderConfig();renderFeed();renderCategories();
+}
+function renderConfig(){
+ $("title").textContent=cfg.nome_empresa||"SN Peixe & Temperos";
+ let a=[];
+ if(cfg.mostrar_whatsapp&&cfg.whatsapp)a.push("📲 WhatsApp: "+esc(cfg.whatsapp));
+ if(cfg.mostrar_email&&cfg.email)a.push("✉️ "+esc(cfg.email));
+ if(cfg.mostrar_pix&&cfg.pix)a.push("💳 Pix: "+esc(cfg.pix));
+ if(cfg.mostrar_entrega&&cfg.entrega_ativa)a.push("🚚 Entrega · taxa "+money(cfg.taxa_entrega));
+ if(cfg.mostrar_retirada&&cfg.retirada_ativa)a.push("🧺 Feira: "+esc((cfg.retirada_dias||[]).join(", ")));
+ $("info").innerHTML=a.join("<br>")||"Informações em breve.";
+}
+function renderFeed(){
+ if(!posts.length){$("feed").innerHTML='<div class="empty">Ainda não há novidades. Volte sempre! 🐟💗</div>';return}
+ $("feed").innerHTML=posts.map(p=>{
+  const isV=p.tipo==="video";
+  return `<article class="post">
+    ${isV?`<video id="v${p.id}" class="media" controls playsinline preload="metadata" src="${esc(p.midia_url)}"></video>
+      <div class="video-tools"><button onclick="togglePlay(${p.id})">▶️ / ⏸️</button><button onclick="toggleMute(${p.id})">🔊 / 🔇 Áudio</button></div>`
+      :`<img class="media" src="${esc(p.midia_url)}" alt="Publicação SN">`}
+    <div class="post-info"><p class="caption">${esc(p.legenda||"")}</p>
+      <div class="post-actions">
+       ${p.permitir_curtidas?`<button class="action" onclick="likePost(${p.id},this)">❤️ Curtir</button>`:""}
+       ${p.permitir_comentarios?`<button class="action" onclick="$('c${p.id}').focus()">💬 Comentar</button>`:""}
+      </div>
+      ${p.permitir_comentarios?`<div class="comment-box"><input id="c${p.id}" placeholder="Escreva um comentário..."><button onclick="commentPost(${p.id})">Enviar</button></div>`:""}
+    </div>
+  </article>`;
+ }).join("");
+}
+function togglePlay(id){const v=$("v"+id);if(!v)return;v.paused?v.play():v.pause()}
+function toggleMute(id){const v=$("v"+id);if(!v)return;v.muted=!v.muted}
+async function likePost(id,b){
+ const key="sn_like_"+id;if(localStorage.getItem(key)){b.textContent="💗 Curtido";b.classList.add("liked");return}
+ const r=await sb.from("curtidas_postagem").insert({postagem_id:id});
+ if(!r.error){localStorage.setItem(key,"1");b.textContent="💗 Curtido";b.classList.add("liked")}
+}
+async function commentPost(id){
+ const el=$("c"+id),txt=el.value.trim();if(!txt)return;
+ const name=prompt("Como podemos chamar você?","Cliente");if(!name)return;
+ const r=await sb.from("comentarios_postagem").insert({postagem_id:id,nome:name,comentario:txt});
+ if(r.error)toast("Não foi possível enviar o comentário.");else{el.value="";toast("Comentário enviado! 💗")}
+}
+function labelCat(c){return String(c||"Outros").replaceAll("_"," ").replace(/\b\w/g,m=>m.toUpperCase())}
+function catClass(c){if(String(c).includes("peixe"))return"blue";if(String(c).includes("torta"))return"pink";if(String(c).includes("tempero"))return"green";return"purple"}
+function catImg(c){
+ const p=products.find(x=>(x.categoria||"Outros")===c && x.imagem_url);
+ return p?.imagem_url||"";
+}
+function categoryProducts(c){
+ const key=String(c||"");
+ if(key==="peixe") return products.filter(x=>String(x.categoria||"").startsWith("peixe"));
+ return products.filter(x=>(x.categoria||"")===key);
+}
+function catImgGroup(c){
+ const p=categoryProducts(c).find(x=>x.imagem_url);
+ return p?.imagem_url||"";
+}
+function renderCategories(){
+ const fixed=[
+  {key:"peixe",label:"Peixes",sub:"Só peixes fresquinhos do dia!",cls:"blue",emoji:"🐟"},
+  {key:"torta",label:"Tortas",sub:"Tortas salgadas e deliciosas!",cls:"pink",emoji:"🥧"},
+  {key:"tempero",label:"Temperos",sub:"Temperos naturais e caseiros!",cls:"green",emoji:"🧂"}
+ ];
+ $("categories").innerHTML=fixed.map(c=>{
+  const img=catImgGroup(c.key);
+  return `<button class="cat ${c.cls}" onclick="openCategory('${c.key}')">
+   ${img?`<img src="${esc(img)}">`:`<div style="font-size:42px;width:74px;text-align:center">${c.emoji}</div>`}
+   <div class="ct"><b>${c.label}</b><span>${c.sub}</span></div><span class="go">›</span>
+  </button>`;
+ }).join("");
+}
+
+function statusInfo(status){
+ const map={novo:{label:"Novo",icon:"🆕",step:0},confirmado:{label:"Confirmado",icon:"✅",step:1},preparando:{label:"Preparando",icon:"📦",step:2},saiu:{label:"Saiu para entrega",icon:"🚚",step:3},concluido:{label:"Pedido entregue",icon:"🏠",step:4}};
+ return map[status]||map.novo;
+}
+function showMyOrders(){
+ $("social").style.display="none";$("productEntry").style.display="none";$("productArea").classList.remove("active");$("ordersArea").classList.add("active");
+ const saved=localStorage.getItem("sn_customer_phone")||$("customerPhone")?.value.trim()||"";
+ if(saved)$("ordersPhone").value=saved;
+ window.scrollTo({top:0,behavior:"smooth"});
+ if(saved)loadMyOrders();
+}
+function renderOrderProgress(status){
+ const info=statusInfo(status),steps=[["🆕","Novo"],["✅","Confirmado"],["📦","Preparando"],["🚚","A caminho"],["🏠","Entregue"]];
+ return `<div class="order-progress">${steps.map((s,i)=>{const cls=i<info.step?"done":i===info.step?"current":"";return `<div class="order-step ${cls}"><div class="dot">${i<=info.step?s[0]:"○"}</div>${s[1]}</div>`}).join("")}</div>`;
+}
+async function loadMyOrders(){
+ const phone=($("ordersPhone")?.value||"").trim(),box=$("ordersList");
+ if(!phone){box.innerHTML='<div class="empty">Digite o WhatsApp usado no pedido. 📱</div>';return}
+ localStorage.setItem("sn_customer_phone",phone);box.innerHTML='<div class="empty">⏳ Procurando seus pedidos...</div>';
+ const clean=phone.replace(/\D/g,"");
+ let {data,error}=await sb.from("pedidos").select("id,cliente,telefone,produto,quantidade,valor,status,observacao,criado_em").eq("telefone",phone).order("id",{ascending:false});
+ let rows=data||[];
+ if(!rows.length&&clean!==phone){
+  const r2=await sb.from("pedidos").select("id,cliente,telefone,produto,quantidade,valor,status,observacao,criado_em").eq("telefone",clean).order("id",{ascending:false});
+  if(!r2.error)rows=r2.data||[];
+ }
+ if(error&&!rows.length){box.innerHTML='<div class="empty">❌ Não foi possível consultar os pedidos agora.</div>';return}
+ if(!rows.length){box.innerHTML='<div class="empty">Nenhum pedido encontrado para este WhatsApp. 💗</div>';return}
+ box.innerHTML=rows.map(o=>{
+  const info=statusInfo(o.status||"novo"),created=o.criado_em?new Date(o.criado_em).toLocaleString("pt-BR"):"";
+  return `<article class="order-card"><div class="order-head"><div class="order-id">📦 Pedido #${o.id}</div><div class="order-status">${info.icon} ${info.label}</div></div>
+  <div class="order-item">🐟 <b>${esc(o.produto||"Produto")}</b> × ${Number(o.quantidade||1)}<br><small>${money(o.valor)}</small></div>
+  ${o.observacao?`<div style="margin-top:9px;font-size:13px">📍 ${esc(o.observacao)}</div>`:""}
+  <div style="margin-top:8px;font-size:12px;color:#667">${created}</div>${renderOrderProgress(o.status||"novo")}<div class="order-total">Status: ${info.label}</div></article>`;
+ }).join("");
+}
+function showProducts(){ $("social").style.display="none";$("productEntry").style.display="none";$("productArea").classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
+function showHome(){ $("productArea").classList.remove("active");$("ordersArea").classList.remove("active");$("social").style.display="block";$("productEntry").style.display="block";window.scrollTo({top:0,behavior:"smooth"})}
+function openCategory(c){
+ showProducts();currentCat=c;
+ const a=categoryProducts(c);
+ $("productList").innerHTML=`<h3>${esc(c==="peixe"?"Peixes":labelCat(c))} 💕</h3><div class="prodgrid">${a.length?a.map(p=>`
+  <article class="prod">${p.imagem_url?`<img src="${esc(p.imagem_url)}">`:"<div style='height:145px;display:grid;place-items:center;font-size:55px'>🐟</div>"}
+   <h3>${esc(p.nome)}</h3><div class="price">${money(p.preco)} / ${esc(p.unidade||"kg")}</div>
+   <div class="desc">${esc(p.descricao||"")}</div><button class="add" onclick="add(${p.id})">🛒 Adicionar</button>
+  </article>`).join(""):"<div class='empty'>Nenhum produto disponível nesta categoria.</div>"}</div>`;
+}
+function add(id){
+ const p=products.find(x=>x.id===id);if(!p)return;
+ const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({...p,qty:1});
+ updateBadge();toast(p.nome+" adicionado! 🛒");renderCart();
+}
+function updateBadge(){$("badge").textContent=cart.reduce((s,p)=>s+p.qty,0)}
+function openCart(){renderCart();$("cartPanel").classList.add("open")}
+function closeCart(){$("cartPanel").classList.remove("open")}
+function renderCart(){
+ const box=$("cartItems");
+ if(!cart.length){box.innerHTML="<div class='empty'>Seu carrinho está vazio. 🛒💗</div>";$("cartTotal").textContent=money(0);return}
+ box.innerHTML=cart.map((p,i)=>`<div class="cart-row">
+  ${p.imagem_url?`<img src="${esc(p.imagem_url)}">`:`<div style="font-size:34px">🐟</div>`}
+  <div><b>${esc(p.nome)}</b><br><small>${money(p.preco)} / ${esc(p.unidade||"kg")}</small></div>
+  <div class="qty"><button onclick="changeQty(${i},-1)">−</button><b>${p.qty}</b><button onclick="changeQty(${i},1)">+</button><button onclick="cart.splice(${i},1);updateBadge();renderCart()">🗑️</button></div>
+ </div>`).join("");
+ const delivery=document.querySelector('input[name="delivery"]:checked')?.value||"entrega";
+ const sub=cart.reduce((s,p)=>s+Number(p.preco||0)*p.qty,0);
+ const fee=delivery==="entrega"&&cfg.entrega_ativa?Number(cfg.taxa_entrega||0):0;
+ $("deliveryPrice").textContent=delivery==="entrega"?("Taxa: "+money(fee)):"Sem taxa";
+ $("cartTotal").textContent=money(sub+fee);
+}
+function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);updateBadge();renderCart()}
+async function sendWhatsApp(){
+ if(!cart.length){toast("Adicione um produto primeiro.");return}
+
+ const name=$("customerName")?.value.trim()||"Cliente";
+ const phone=$("customerPhone")?.value.trim()||"";
+ const address=$("customerAddress")?.value.trim()||"";
+ const delivery=document.querySelector('input[name="delivery"]:checked')?.value||"entrega";
+
+ if(delivery==="entrega" && !address){
+   toast("Informe o endereço para entrega.");
+   $("customerAddress")?.focus();
+   return;
+ }
+
+ const sub=cart.reduce((s,p)=>s+Number(p.preco||0)*p.qty,0);
+ const fee=delivery==="entrega"&&cfg.entrega_ativa?Number(cfg.taxa_entrega||0):0;
+ const total=sub+fee;
+ const items=cart.map(p=>({
+   id:p.id,nome:p.nome,preco:Number(p.preco||0),quantidade:p.qty,
+   categoria:p.categoria||""
+ }));
+
+ // A tabela atual de pedidos possui uma linha por produto.
+ // Portanto, cada item do carrinho vira um registro, com os dados da entrega na observação.
+ const observacaoBase=(delivery==="entrega"
+   ? `Entrega em casa | Endereço: ${address} | Taxa: ${money(fee)} | Total do carrinho: ${money(total)}`
+   : `Retirada na feira | Total do carrinho: ${money(total)}`);
+
+ const rows=items.map(item=>({
+   cliente:name,
+   telefone:phone,
+   produto:item.nome,
+   quantidade:Number(item.quantidade||1),
+   cor:"",
+   valor:Number(item.preco||0)*Number(item.quantidade||1),
+   status:"novo",
+   observacao:observacaoBase
+ }));
+
+ const {data,error}=await sb.from("pedidos").insert(rows).select("id");
+
+ if(error){
+   console.error(error);
+   toast("Não foi possível registrar o pedido.");
+   return;
+ }
+
+ localStorage.setItem("sn_customer_phone",phone);
+  const firstId=data?.[0]?.id||"";
+ const lines=cart.map(p=>`- ${p.nome} x${p.qty} — ${money(Number(p.preco||0)*p.qty)}`).join("\n");
+ let t=`Olá, Silvani! 💗 Quero fazer este pedido:\n\nPedido #${firstId}${data?.length>1?" (itens registrados separadamente)":""}\nCliente: ${name}`;
+ if(phone)t+=`\nWhatsApp: ${phone}`;
+ t+=`\n\n${lines}\n\nSubtotal: ${money(sub)}`;
+ t+=delivery==="entrega"?`\nEntrega: em casa\nEndereço: ${address}\nTaxa: ${money(fee)}`:"\nRetirada: na feira";
+ t+=`\nTotal: ${money(total)}`;
+
+ const number=String(cfg.whatsapp||"").replace(/\D/g,"");
+ if(!number){
+   toast("Pedido registrado, mas o WhatsApp não está configurado.");
+   return;
+ }
+
+ location.href="https://wa.me/"+number+"?text="+encodeURIComponent(t);
+}
+init();
+</script>
+</body>
+</html>
