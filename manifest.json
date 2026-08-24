@@ -1,0 +1,12 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "SN Peixe &amp; Temperos",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "SN Peixe",
+  "start_url": "/",
+  "theme_color": "#f7b900",
+  "lang": "pt"
+}
