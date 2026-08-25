@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.simonebritodossantos2005_lang.twa",
+      "sha256_cert_fingerprints": [
+        "A7:C0:76:1B:58:83:AD:06:40:18:49:73:58:14:54:1F:50:80:B2:1C:2B:9D:B6:B5:81:0C:D5:5A:63:1D:EA:A3"
+      ]
+    }
+  }
+]
