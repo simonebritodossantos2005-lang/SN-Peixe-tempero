@@ -6,7 +6,76 @@
 <meta name="theme-color" content="#f7b900">
 <link rel="manifest" href="manifest.json">
 <title>SN Peixe & Temperos</title>
-<style>
+<style> 
+#splash{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255,255,255,.35), transparent 30%),
+    linear-gradient(180deg,#f7b900 0%,#ffd83d 38%,#2196d3 100%);
+  color:#fff;
+}
+
+#splash .fish{
+  font-size:90px;
+  position:relative;
+  animation:fishSwim 3s ease-in-out infinite;
+  filter:drop-shadow(0 8px 8px rgba(0,0,0,.18));
+}
+
+#splash .bubbles{
+  position:absolute;
+  top:20%;
+  display:flex;
+  gap:25px;
+  animation:bubblesUp 2.5s ease-in-out infinite;
+}
+
+#splash .bubbles span{
+  font-size:25px;
+}
+
+.splash-title{
+  margin-top:25px;
+  font-size:34px;
+  font-weight:800;
+  text-shadow:0 3px 8px rgba(0,0,0,.25);
+}
+
+.splash-subtitle{
+  margin-top:6px;
+  font-size:18px;
+  font-weight:600;
+}
+
+@keyframes fishSwim{
+  0%,100%{
+    transform:translateX(-55px) rotate(-4deg);
+  }
+  50%{
+    transform:translateX(55px) rotate(4deg);
+  }
+}
+
+@keyframes bubblesUp{
+  0%{
+    transform:translateY(35px);
+    opacity:.3;
+  }
+  50%{
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-35px);
+    opacity:.3;
+  }
+}
 :root{
   --gold:#f7b900;--gold2:#ffd83d;--cream:#fff8d7;--ink:#16233a;
   --pink:#f34f83;--green:#2cab59;--blue:#2196d3;--purple:#8b5bd6;
@@ -153,7 +222,19 @@ h1{font-family:Georgia,serif;font-size:44px;line-height:.98;margin:0;font-weight
 }
 </style>
 </head>
-<body>
+<body> 
+  <div id="splash">
+  <div class="bubbles">
+    <span>🫧</span>
+    <span>🫧</span>
+    <span>🫧</span>
+  </div>
+
+  <div class="fish">🐟</div>
+
+  <div class="splash-title">SN Peixe</div>
+  <div class="splash-subtitle">Sampa & Temperos</div>
+</div>
 <div class="app">
 <header class="hero" id="home">
   <button class="cart-top" onclick="openCart()" aria-label="Carrinho">🛒<span class="badge" id="badge">0</span></button>
@@ -469,6 +550,22 @@ if ("serviceWorker" in navigator) {
       .catch((erro) => console.error("Erro no Service Worker:", erro));
   });
   }
+</script> 
+<script>
+window.addEventListener("load", () => {
+  const splash = document.getElementById("splash");
+
+  if (!splash) return;
+
+  setTimeout(() => {
+    splash.style.transition = "opacity 0.8s ease";
+    splash.style.opacity = "0";
+
+    setTimeout(() => {
+      splash.remove();
+    }, 800);
+  }, 3000);
+});
 </script>
 </body>
 </html>
