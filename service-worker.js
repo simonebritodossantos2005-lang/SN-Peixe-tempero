@@ -1,4 +1,4 @@
-const CACHE_NAME = "sn-peixe-v1";
+const CACHE_NAME = "sn-peixe-v2";
 
 const ARQUIVOS = [
   "./",
